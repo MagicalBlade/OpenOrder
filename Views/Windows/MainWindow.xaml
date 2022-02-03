@@ -1,0 +1,56 @@
+﻿<Window x:Class="OpenOrder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" mc:Ignorable="d"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:l="clr-namespace:OpenOrder"
+        xmlns:vml = "clr-namespace:OpenOrder.ViewModels"
+        vml:ViewModelLocator.AutoHookedUpViewModel = "True" 
+        Title="Открыть" Width="513" Height="373" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ListBox Grid.Row="0" Grid.Column="0" Margin="3"
+                    ItemsSource="{Binding Folders}"
+                    SelectedItem="{Binding SelectFolder}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"  Width="230" Padding="5" Background="{Binding DefaultFolder}">
+                        <TextBlock.InputBindings>
+                            <MouseBinding MouseAction="LeftDoubleClick"
+                                          Command="{Binding DataContext.OpenSearchFolder, RelativeSource={RelativeSource AncestorType=ListBox}}" />
+                        </TextBlock.InputBindings>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Добавить" Margin="3,3" Padding="3,2" Command="{Binding OpenFolderAddWindow}"/>
+            <Button Content="Редактировать" Margin="3,3" Padding="3,2" Command="{Binding OpenFolderEditorWindow}"/>
+            <Button Content="Удалить" Margin="3,3" Padding="3,2" Command="{Binding DeletFolder}"/>
+            <Button Content="По умолчанию" ToolTip="При нажатии на кнопку открыть или кнопки Enter заказ откроется их папки по умолчанию."  Margin="3,3" Padding="3,2" Command="{Binding SetDefaultFolder}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <Label Content="Заказ" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+            <TextBox Width="100" Height="25" Text="{Binding SearhOrder, UpdateSourceTrigger=PropertyChanged}" Padding="3">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Return" Command="{Binding OpenSearchDefaultFolder}"/>
+                </TextBox.InputBindings>
+            </TextBox>
+            <Button Content="Открыть" Command="{Binding OpenSearchDefaultFolder}" Margin="5" Padding="3"/>
+        </StackPanel>
+        <StatusBar Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
+            <StatusBarItem>
+                <Label Content="{Binding StatusBar}"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

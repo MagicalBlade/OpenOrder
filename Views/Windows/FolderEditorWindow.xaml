@@ -1,0 +1,32 @@
+﻿<Window x:Class="OpenOrder.Views.Windows.FolderEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OpenOrder.Views.Windows"
+        mc:Ignorable="d"
+        Name="FolderEditorW" Height="168" Width="404" ResizeMode="NoResize">
+    <Window.InputBindings>
+        <KeyBinding Key="Esc" Command="{Binding CloseApplication}" CommandParameter="{Binding ElementName=FolderEditorW}"/>
+        <KeyBinding Key="Return" Command="{Binding AddFolder}" CommandParameter="{Binding ElementName=FolderEditorW}"/>
+    </Window.InputBindings>
+    <Grid Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <UniformGrid Grid.Row="0" Rows="3" Columns="2" Height="Auto">
+            <Label DockPanel.Dock="Top" Content="Имя папки" HorizontalAlignment="Center" Height="Auto" Width="Auto" Margin="3"/>
+            <Label DockPanel.Dock="Top" Content="Путь к папке" HorizontalAlignment="Center" Margin="3"/>
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Margin="3" Padding="5" VerticalAlignment="Center"/>
+            <TextBox Text="{Binding Dir, UpdateSourceTrigger=PropertyChanged}" Margin="3" Padding="5" VerticalAlignment="Center"/>
+            <Button Content="{Binding ButtonNameOK}" Margin="3,3" Padding="3,3" Height="25" Width="120" Command="{Binding AddFolder}" CommandParameter="{Binding ElementName=FolderEditorW}"/>
+            <Button Content="Закрыть" Margin="3,3" Padding="3,3" Height="25" Width="120" Command="{Binding CloseApplication}" CommandParameter="{Binding ElementName=FolderEditorW}"/>
+        </UniformGrid>
+        <StatusBar  Grid.Row="1">
+            <StatusBarItem>
+                <Label Content="Test"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
