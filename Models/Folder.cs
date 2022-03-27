@@ -17,7 +17,17 @@ namespace OpenOrder.Models
 
         internal string Open(string SearchForder)
         {
-            #region Проверки на допустимые символы и т.п.
+            #region Проверки на допустимые символы и т.п. а так же открытие папки если ячейка с заказом пустая.
+            if (!Directory.Exists(Dir))
+            {
+                return "Проверьте правильность пути к папке.";
+            }
+
+            if (SearchForder == null)
+            {
+                Process.Start(Dir);
+                return "";
+            }
             if (SearchForder.Intersect("\\/:*?<>|\"").Any())
             {
                 return "Не допустимые символы в названии заказа.";
@@ -25,10 +35,6 @@ namespace OpenOrder.Models
             if (SearchForder.Length < 4)
             {
                 return "Номер заказа должен состоять из минимум 4 цифр.";
-            }
-            if (!Directory.Exists(Dir))
-            {
-                return "Проверьте правильность пути к папке.";
             }
             #endregion
 

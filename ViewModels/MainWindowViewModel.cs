@@ -126,7 +126,7 @@ namespace OpenOrder.ViewModels
         /// <summary>Открытие заказа</summary>
         public ICommand OpenSearchFolder { get; }
 
-        private bool CanOpenFolderCommandExecute(object p) => SelectFolder != null && SearhOrder != null;
+        private bool CanOpenFolderCommandExecute(object p) => SelectFolder != null ;
         private void OnOpenFolderCommandExecute(object p)
         {
             StatusBar = SelectFolder.Open(SearhOrder);
