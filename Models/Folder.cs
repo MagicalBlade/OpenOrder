@@ -23,7 +23,7 @@ namespace OpenOrder.Models
                 return "Проверьте правильность пути к папке.";
             }
 
-            if (SearchForder == null)
+            if (SearchForder == "" || SearchForder == null)
             {
                 Process.Start(Dir);
                 return "";
