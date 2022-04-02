@@ -7,7 +7,7 @@
         xmlns:l="clr-namespace:OpenOrder"
         xmlns:vml = "clr-namespace:OpenOrder.ViewModels"
         vml:ViewModelLocator.AutoHookedUpViewModel = "True" 
-        Title="Открыть" Width="513" Height="373" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Открыть" Width="513" Height="373" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
