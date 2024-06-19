@@ -38,7 +38,7 @@ namespace OpenOrder.Models
             }
             #endregion
 
-            string[] dirs = Directory.GetDirectories(Dir, "*" + SearchForder + "*");
+            string[] dirs = Directory.GetDirectories(Dir, "*" + "З.з.№" + SearchForder + ". " + "*");
 
             if (dirs.Length == 0)
             {
