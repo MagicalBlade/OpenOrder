@@ -7,6 +7,7 @@ namespace OpenOrder
         public MainWindow()
         {
             InitializeComponent();
+            test.Focus();
         }
     }
 }

@@ -40,7 +40,7 @@
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1">
             <Label Content="Заказ" HorizontalAlignment="Center" Margin="0,10,0,0"/>
-            <TextBox Width="100" Height="25" Text="{Binding SearhOrder, UpdateSourceTrigger=PropertyChanged}" Padding="3">
+            <TextBox x:Name="test" Width="100" Height="25" Text="{Binding SearhOrder, UpdateSourceTrigger=PropertyChanged}" Padding="3" TabIndex="0">
                 <TextBox.InputBindings>
                     <KeyBinding Key="Return" Command="{Binding OpenSearchDefaultFolder}"/>
                 </TextBox.InputBindings>
