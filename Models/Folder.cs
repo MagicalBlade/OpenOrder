@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Media;
 
@@ -38,7 +39,10 @@ namespace OpenOrder.Models
             }
             #endregion
 
-            string[] dirs = Directory.GetDirectories(Dir, "*" + "З.з.№" + SearchForder + ". " + "*");
+            Regex re = new Regex($@"({SearchForder}[\.,]\D)|({SearchForder}-)", RegexOptions.IgnoreCase);
+            string[] dirs = Directory.GetDirectories(Dir, "*" + SearchForder + "*")
+                    .Where(path => re.IsMatch(path))
+                    .ToArray();
 
             if (dirs.Length == 0)
             {
